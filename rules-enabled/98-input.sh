@@ -1,0 +1,1 @@
+../rules-available/98-input.sh

@@ -1,0 +1,1 @@
+../rules-available/01-kids.sh
