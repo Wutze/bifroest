@@ -1,11 +1,15 @@
 #!/usr/bin/env bash
 #
-# FIREWALL SCRIPT
-# (c) M. Glotz 2006-17 Version 3.0
-# Einfaches und übersichtliches Script welches direkt aus der /etc/rc.local
-# aufgerufen werden kann
+# Simple Firewall-Script with iptables
+# only IPv4
 #
+# (c) by Wutze 2006-18 Version 3.0
 #
+# This file is copyright under the latest version of the EUPL.
+# Please see LICENSE file for your rights under this license.
+# Version 1.x
+#
+# Twitter -> @HuWutze
 #
 
 rulename="SRV-INT"

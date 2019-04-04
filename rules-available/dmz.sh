@@ -1,17 +1,15 @@
 #!/usr/bin/env bash
 #
-# FIREWALL SCRIPT
-# Version 1.0 2006
-# Version 1.5 2009
-# Version 2.0 2012
-# Version 2.2 2013
-# Version 2.5 2013
-# Version 3.0 2018
-# (c) @huwutze 2006-19 Version 3.1
+# Simple Firewall-Script with iptables
+# only IPv4
 #
-# Einfaches, übersichtliches und dynamisch erweiterbares Script
+# (c) by Wutze 2006-18 Version 3.0
 #
+# This file is copyright under the latest version of the EUPL.
+# Please see LICENSE file for your rights under this license.
+# Version 1.x
 #
+# Twitter -> @HuWutze
 #
 
 ## Zwingend einzutragen
