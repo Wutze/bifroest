@@ -1,0 +1,27 @@
+#!/bin/sh -e
+### BEGIN INIT INFO
+# Provides:          microwall
+# Required-Start:    $local_fs $network
+# Required-Stop:
+# Default-Start:     S
+# Default-Stop:
+# Short-Description: microwall
+# Description:       microwall - extended firewall script
+### END INIT INFO
+
+case "$1" in
+    start)
+        # START
+        exec /opt/firewall/firewall.sh $1
+        ;;
+    stop)
+        # STOP
+        exec /opt/firewall/firewall.sh $1
+        ;;
+    restart|reload|help|logon|logoff|status|save|restore)
+        # All other
+        exec /opt/firewall/firewall.sh $1
+        ;;
+esac
+ 
+exit 0
