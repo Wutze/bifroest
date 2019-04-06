@@ -11,7 +11,19 @@
 #
 # Twitter -> @HuWutze
 # Repo: home
-#cd /opt/firewall
+
+#LSB tags
+### BEGIN INIT INFO
+# Provides: microwall
+# Required-Start: $remote_fs $network
+# Required-Stop: $remote_fs $network
+# Default-Start: 2 3 4 5
+# Default-Stop: 0 1 6
+# Short-Description: Firewall Script
+# Description: microwall - extended and modular firewallscript for iptables 
+### END INIT INFO
+
+cd /opt/firewall
 
 ## Debug your Script
 ## Start this Script with: DEBUG=1 ./firewall.sh [Options]
@@ -20,7 +32,7 @@ test -z "$DEBUG" || set -x
 ### Start Firewall!
 NAME="Firewall"
 PIDFILE=/var/run/$NAME.pid
-LOGFW=1
+#LOGFW=1
 
 # many thanks to the pi-hole project for the next 5 color-lines
 # print status, run in color
