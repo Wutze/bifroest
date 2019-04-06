@@ -51,9 +51,6 @@ $FW -A INPUT -p tcp -i $DEV_EXTERN -m multiport --dport 80,443 -j ACCEPT	# Auf d
 $FW -I INPUT -p tcp --dport 443 -i $DEV_EXTERN -m state --state NEW -m recent --set
 $FW -I INPUT -p tcp --dport 443 -i $DEV_EXTERN -m state --state NEW -m recent --update --seconds 60 --hitcount 4 -j DROP
 
-
-
-
 ## Alles was einmal rausgelassen wurde, darf auch zurück antworten
 $FW -A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
 ## Alles was falsch läuft loggen

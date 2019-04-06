@@ -43,19 +43,6 @@ $FW -A OUTPUT -o $DEV_INTERN -p udp -m multiport --dport 123 -j ACCEPT	# NTP
 $FW -A OUTPUT -p tcp -o $DEV_DMZ1 -m multiport --dport 80,81,443,3000 -j ACCEPT		## Proxy-Weiterleitungen
 $FW -A OUTPUT -p tcp -o $DEV_INTERN -m multiport --dport 80,3000 -j ACCEPT		## Proxy-Weiterleitungen
 
-## Tor Netzwerk
-$FW -A OUTPUT -p tcp -o $DEV_EXTERN -m multiport --dport 9001 -j ACCEPT		## Tor
-$FW -A OUTPUT -p tcp -o $DEV_INTERN -m multiport --dport 6100 -j ACCEPT		## Tor
-#$FW -A OUTPUT -o $DEV_EXTERN -j ACCEPT		## Tor
-
-#$FW -A OUTPUT -p tcp --dport 53 -d $DNS3 -j ACCEPT		## DNS Serverabfrage zulassen nur intern
-
-#$FW -A OUTPUT -p tcp --dport 2003 -d 192.168.104.111 -j ACCEPT		## Collectd -> Ziel: db.home
-
-#$FW -A OUTPUT -p udp -o $DEV_INTERN -m multiport --dport 67,68 -j ACCEPT
-#$FW -A OUTPUT -p udp -o $DEV_DMZ1 -m multiport --dport 67,68 -j ACCEPT
-#$FW -A OUTPUT -p udp -o $DEV_LAN1 -m multiport --dport 67,68 -j ACCEPT
-
 ## Alles was einmal rausgelassen wurde, darf auch zurück antworten
 $FW -A OUTPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
 ## Alles was falsch läuft loggen

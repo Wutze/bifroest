@@ -1,15 +1,11 @@
 #!/usr/bin/env bash
 #
-# Simple Firewall-Script with iptables
-# only IPv4
+# FIREWALL SCRIPT 
+# (c) M. Glotz 2006-17 Version 3.0
+# Einfaches und übersichtliches Script welches direkt aus der /etc/rc.local
+# aufgerufen werden kann
 #
-# (c) by Wutze 2006-18 Version 3.0
 #
-# This file is copyright under the latest version of the EUPL.
-# Please see LICENSE file for your rights under this license.
-# Version 1.x
-#
-# Twitter -> @HuWutze
 #
 
 rulename="SAMSUNG1"
@@ -36,14 +32,12 @@ current_object_s[$count]=$SAMSUNG1
 current_object_d[$count]="0.0.0.0/0"
 
 ## log-ingestion-eu.samsungacr.com
-## Beispiel für "verbotene" IP-Adressen
 $FW -A $rulename -i $DEV_INTERN -s $SAMSUNG1 -o $DEV_EXTERN -d 52.210.168.19 -j DROP
 $FW -A $rulename -i $DEV_INTERN -s $SAMSUNG1 -o $DEV_EXTERN -d 52.209.220.122 -j DROP
 
-## Der/Die Geräte dürfen damit uneingeschränkt kommunizieren
+
 $FW -A $rulename -i $DEV_INTERN -s $SAMSUNG1 -o $DEV_EXTERN -j ACCEPT
 $FW -A $rulename -i $DEV_INTERN -s $SAMSUNG1 -o $DEV_INTERN -j ACCEPT
 
-## Bisweilen machen TV-Geräte Ärger, weil sie auf den Router zugreifen wollen (Ping, DLNA, Brodcasts usw.)
 $FW -A INPUT -s $SAMSUNG1 -j ACCEPT
 $FW -A OUTPUT -d $SAMSUNG1 -j ACCEPT

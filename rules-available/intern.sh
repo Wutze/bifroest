@@ -35,20 +35,17 @@ current_object_s[$count]="192.168.104.64/26"
 current_object_d[$count]="0.0.0.0/0"
 ########################################################
 
-## in die DMZ kommunizieren
+
 $FW -A $rulename -i $DEV_INTERN -o $DEV_DMZ1 -p tcp -m multiport --dport 22,80,443 -j ACCEPT	## HTTP/S, SSH -> DMZ
 
-## Mobiltelefone dürfen ins Internet (WLAN)
-$FW -A $rulename -i $DEV_INTERN -o $DEV_EXTERN -s 192.168.104.100 -p tcp -m multiport --dport 80,443 -j ACCEPT	## Mobile-Phone-1
+$FW -A $rulename -i $DEV_INTERN -o $DEV_EXTERN -p udp -m multiport --dport 123 -j DROP		##
+
+$FW -A $rulename -i $DEV_INTERN -o $DEV_EXTERN -s 192.168.104.100 -p tcp -m multiport --dport 80,443 -j ACCEPT	## MobilPhone
 $FW -A $rulename -i $DEV_INTERN -o $DEV_INTERN -s 192.168.104.100 -p udp -m multiport --dport 53 -j ACCEPT		##
 $FW -A $rulename -i $DEV_INTERN -o $DEV_INTERN -s 192.168.104.100 -p tcp -m multiport --dport 53 -j ACCEPT		##
 
-$FW -A $rulename -i $DEV_INTERN -o $DEV_EXTERN -s 192.168.104.101 -p tcp -m multiport --dport 80,443 -j ACCEPT	## Mobile-Phone-2
-$FW -A $rulename -i $DEV_INTERN -o $DEV_INTERN -s 192.168.104.101 -p udp -m multiport --dport 53 -j ACCEPT		##
-$FW -A $rulename -i $DEV_INTERN -o $DEV_INTERN -s 192.168.104.101 -p tcp -m multiport --dport 53 -j ACCEPT		##
+$FW -A $rulename -i $DEV_INTERN -o $DEV_INTERN -s 192.168.104.104 -p tcp -m multiport --dport 53 -j ACCEPT		## Sip-Phone
+$FW -A $rulename -i $DEV_INTERN -o $DEV_DMZ1 -s 192.168.104.104 -d 172.16.16.57 -j ACCEPT		##
 
-## Telefonstation darf nur zum Telefonserver
-$FW -A $rulename -i $DEV_INTERN -o $DEV_INTERN -s 192.168.104.104 -p tcp -m multiport --dport 53 -j ACCEPT		## Mobile-Phone-Station
-$FW -A $rulename -i $DEV_INTERN -o $DEV_DMZ1 -s 192.168.104.104 -p udp -m multiport --dport 5060 -j ACCEPT		##
 
 ########################################################
