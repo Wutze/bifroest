@@ -50,10 +50,7 @@ do
 	# FORWARD aus Subnetz nach Subnetz
 	$FW -A FORWARD $var_s $var_d -j ${forwardrule[i]}
 	$FW -A ${forwardrule[i]} -m state --state RELATED,ESTABLISHED -j ACCEPT
-	# ?? braucht es das überhaupt?!
 	$FW -A FORWARD $var_s2 -m state --state RELATED,ESTABLISHED -j ${forwardrule[i]}
-	#$FW -A FORWARD -m state --state RELATED,ESTABLISHED -j ${forwardrule[i]}
-
 	$FW -A ${forwardrule[i]} $LOG_LIMITER -j LOG --log-prefix "[FW] DENY-"${forwardrule[i]}" "
 	$FW -A ${forwardrule[i]} -j DROP
 done
@@ -70,11 +67,5 @@ $FW -A FORWARD $LOG_LIMITER -j LOG --log-prefix "[FW] DENY-FWD-ACCESS "
 ## NAT setzen für IPv4
 echo "1" >  /proc/sys/net/ipv4/ip_forward
 
-## funktioniert meist nur mit eigener Hardware
-## Kurze Tonfolge und zeige dass das Script bis zu Ende abgearbeitet wurde
-#beep -f 900 500
-#beep -f 1000 500
-#beep -f 900 500
-
 ## Statusmeldung nach /var/log/syslog
-echo "Firewall online - Status="$DEFAULT_STATUS" Logging="$LOGFW"" | logger -i -t [FW]
+echo "Firewall online - Status="$DEFAULT_STATUS" Logging="$DEBUG_FW"" | logger -i -t [FW]
