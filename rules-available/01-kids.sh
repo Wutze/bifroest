@@ -1,22 +1,20 @@
 #!/usr/bin/env bash
 #
-# FIREWALL SCRIPT
-# Version 1.0 2006
-# Version 1.5 2009
-# Version 2.0 2012
-# Version 2.2 2013
-# Version 2.5 2013
-# Version 3.0 2018
-# (c) @huwutze 2006-19 Version 3.1
+# Simple Firewall-Script with iptables
+# only IPv4
 #
-# Einfaches, übersichtliches und dynamisch erweiterbares Script
+# (c) by Wutze 2006-18 Version 3.0
 #
+# This file is copyright under the latest version of the EUPL.
+# Please see LICENSE file for your rights under this license.
+# Version 1.x
 #
+# Twitter -> @HuWutze
 #
 
 ## Zwingend einzutragen
 ## Eintrag sollte unique sein!
-rulename="ALEX"
+rulename="KIDS"
 
 ## nicht verändern
 ## Diese beiden Zeilen erzeugen ein Array, welches in der "ende.sh" eingelesen und
@@ -49,17 +47,17 @@ $FW -A $rulename -i $DEV_LAN1 -o $DEV_INTERN -s 10.10.10.61 -p ICMP -j ACCEPT   
 
 $FW -A $rulename -i $DEV_LAN1 -o $DEV_DMZ1 -s 10.10.10.61 -p tcp -m multiport --dport 80,443 -j ACCEPT            ## HTTP/S
 
-$FW -A $rulename -i $DEV_LAN1 -o $DEV_EXTERN -s 10.10.10.50 -j ACCEPT		## Alex PC1
+$FW -A $rulename -i $DEV_LAN1 -o $DEV_EXTERN -s 10.10.10.50 -j ACCEPT		## PC1
 $FW -A $rulename -i $DEV_LAN1 -o $DEV_INTERN -s 10.10.10.50 -d $DNS_INTERN1 -j ACCEPT		## PC1
-$FW -A $rulename -i $DEV_LAN1 -o $DEV_DMZ1 -s 10.10.10.50 -j ACCEPT		## Alex PC1
+$FW -A $rulename -i $DEV_LAN1 -o $DEV_DMZ1 -s 10.10.10.50 -j ACCEPT		## PC1
 
-$FW -A $rulename -i $DEV_LAN1 -o $DEV_EXTERN -s 10.10.10.52 -j ACCEPT		## Alex PS4
+$FW -A $rulename -i $DEV_LAN1 -o $DEV_EXTERN -s 10.10.10.52 -j ACCEPT		## PS4
 $FW -A $rulename -i $DEV_LAN1 -o $DEV_INTERN -s 10.10.10.52 -d $DNS_INTERN1 -j ACCEPT		## PS4
-$FW -A $rulename -i $DEV_LAN1 -o $DEV_DMZ1 -s 10.10.10.52 -j ACCEPT		## Alex PS4
+$FW -A $rulename -i $DEV_LAN1 -o $DEV_DMZ1 -s 10.10.10.52 -j ACCEPT		## PS4
 
-$FW -A $rulename -i $DEV_LAN1 -o $DEV_EXTERN -s 10.10.10.54 -j ACCEPT		## Alex PC2
+$FW -A $rulename -i $DEV_LAN1 -o $DEV_EXTERN -s 10.10.10.54 -j ACCEPT		## PC2
 $FW -A $rulename -i $DEV_LAN1 -o $DEV_INTERN -s 10.10.10.54 -d $DNS_INTERN1 -j ACCEPT		## PC2
-$FW -A $rulename -i $DEV_LAN1 -o $DEV_DMZ1 -s 10.10.10.54 -j ACCEPT		## Alex PC2
+$FW -A $rulename -i $DEV_LAN1 -o $DEV_DMZ1 -s 10.10.10.54 -j ACCEPT		## PC2
 
 
 
