@@ -43,6 +43,9 @@ $FW -A OUTPUT -o $DEV_INTERN -p udp -m multiport --dport 123 -j ACCEPT	# NTP
 $FW -A OUTPUT -p tcp -o $DEV_DMZ1 -m multiport --dport 80,81,443,3000 -j ACCEPT		## Proxy-Weiterleitungen
 $FW -A OUTPUT -p tcp -o $DEV_INTERN -m multiport --dport 80,3000 -j ACCEPT		## Proxy-Weiterleitungen
 
+## Tor Netzwerk
+$FW -A OUTPUT -p tcp -o $DEV_EXTERN -m multiport --dport 9001 -j ACCEPT		## Tor
+$FW -A OUTPUT -p tcp -o $DEV_INTERN -m multiport --dport 6100 -j ACCEPT		## Tor
 ## Alles was einmal rausgelassen wurde, darf auch zurück antworten
 $FW -A OUTPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
 ## Alles was falsch läuft loggen
