@@ -100,4 +100,112 @@ Im Ordner snippets:
 2. Ein Start/Stop-Script für ``` /etc/init.d/ ```, einfach da hinein kopieren. Fertig
 
 
+# English Translation
+
+Copy the firewallscript to ``` /opt/bifroest/ ``` best
+
+git clone
+```
+cd /opt/
+git clone https://github.com/Wutze/bifroest.git
+```
+
+Download zip Datei
+```
+wget https://github.com/Wutze/bifroest/archive/master.zip
+unzip master.zip
+mkdir /opt/bifroest
+cp -a firewall-master/. /opt/bifroest
+```
+
+# Configuration
+
+* ``` firewall.conf ```
+
+Not everyone will have so many interfaces on the router. Therefore you can also delete the corresponding and unused variables, they are not indispensable if the interfaces are not available. They serve here only as an example.
+
+```
+## Default all open or all closed?!
+DEFAULT_STATUS="DROP" 
+#DEFAULT_STATUS="ACCEPT" 
+
+## Schnittstellen definieren 
+DEV_INTERN="eth1" 
+DEV_EXTERN="ppp0" 
+DEV_DMZ1="eth3" 
+DEV_LAN1="eth0" 
+DEV_LAN2="eth2" 
+DEV_VPN1="tun0"
+```
+
+The networks, ports, etc. listed below are also often only of interest if you have a large number of clients on your own network. The names of the variables can also be adapted so that you can develop your own naming conventions, which you can also remember.
+
+## Benutzung der Firewall, Starten, Stoppen usw.
+
+* ``` ./firewall help ``` view helptext
+* ``` ./firewall start ``` or ``` ./firewall stop ``` start or stop firewall
+* ``` ./firewall backup ``` backup firewall to ``` /tmp/ ```
+* ``` ./firewall restore ``` restore firewall
+* ``` ./firewall debug 1 ``` enable extended logging ``` /var/log/syslog ```
+* ``` ./firewall debug 0 ``` disable extended logging
+
+## Note:
+
+For the sake of simplicity, the firewall script is completely deleted and rebuilt with each function call. If someone wants to log access to various rules, e.g. with collectd, this will not work without further ado.
+
+Further functions are currently in the works.
+
+# Create the rules
+## Default Rulesets
+
+The default rule sets are ```` 98-input.sh ``` and ``` 99-output.sh ```. The digits before the file names are necessary and are processed in exactly this order. No file with numbers above 98 should be created. It is that you know exactly what you are doing. In addition, these two rule sets are entered directly into the firewall, since they only stand for OUTPUT and INPUT on the router. All other rules define the other files that control the access of the network clients.
+
+The input.sh provided here allows any communication from the internal networks with the router. So you have to adjust it so that only the communication that should actually be allowed is allowed. Remember, most hacker attacks happen mostly from the internal network!
+
+The output.sh is a bit finer adjusted here. It defines where the router is allowed to send answers or which communication it is allowed to establish itself.
+
+So the rules for the router should be clear.
+
+## Network rulesets
+
+There are some example rule sets under ``` rules-available/ ```. Each shows different variations and should therefore be self-explanatory in itself.
+
+# Debugging
+
+There are two different debugging solutions.
+
+1. debug rule sets
+2. debug the firewall script
+
+## Debug Rulesets
+
+You can control the debugging of rule sets in the firewall.conf. The ``` DEBUG_FW=1 ``` variable turns on debugging and displays any rule case that does not match the conditions you set. If you have disabled debugging by default, which makes sense otherwise the syslog file can get very full, you can enable logging with ``` /opt/bifroest/firewall debug 1 ``, then disable logging with "0".
+
+## Script debug
+
+With ``` DEBUG=1 /opt/bifroest/firewall [Options] ``` the debugging of the script is enabled. Here you can see possible (write) errors in your rule sets.
+
+# Enable rules
+
+The links _must_ have the extension ``` sh ````, otherwise they will not be read and activated automatically!
+
+``` ln -s -s /opt/bifroest/rules-available/ [ filename.sh ] /opt/bifroest/rules-enable/ [filename.sh] ```
+
+# Enable rules
+
+The links _must_ have the extension ``` sh ````, otherwise they will not be read and activated automatically!
+
+``` ln -s -s /opt/bifroest/rules-available/ [ filename.sh ] /opt/bifroest/rules-enable/ [filename.sh] ```
+
+# Snippets
+
+In the snippets folder:
+
+1. assuming you have Multitail installed, add the lines from multitail.conf to /etc/multitail.conf. By calling: ``` multitail -s 2 -cS microwall /var/log/syslog ``` you will have a colored output that makes it easier to find errors.
+
+2. a start/stop script for ``` /etc/init.d/ ```, just copy it in. Done
+
+
+
+
 
