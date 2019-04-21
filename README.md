@@ -1,19 +1,23 @@
+# Bifroest - Firewallscript
+
+Getestet unter Ubuntu, Debian 9
+
 # Installation
 
-Das Firewallscript am besten nach ``` /opt/firewall/ ``` kopieren
+Das Firewallscript am besten nach ``` /opt/bifroest/ ``` kopieren
 
 git clone
 ```
 cd /opt/
-git clone https://github.com/Wutze/firewall
+git clone https://github.com/Wutze/bifroest.git
 ```
 
 Download zip Datei
 ```
-wget https://github.com/Wutze/firewall/archive/master.zip
+wget https://github.com/Wutze/bifroest/archive/master.zip
 unzip master.zip
-mkdir /opt/firewall
-cp -a firewall-master/. /opt/firewall
+mkdir /opt/bifroest
+cp -a firewall-master/. /opt/bifroest
 ```
 
 # Konfiguration
@@ -75,17 +79,17 @@ Es gibt zwei verschiedene Debugging Lösungen.
 
 ## Debug Rulesets
 
-Steuern lässt sich das Debugging der Regelsets in der firewall.conf. Die Variable ``` DEBUG_FW=1 ``` schaltet das Debugging ein und zeigt jeden Regelfall an, der nicht den Bedingungen entspricht die Du gesetzt hast. Hast Du das Debugging Standardmaäßig ausgeschaltet, was sinnvoll ist da sonst das syslog-File sehr voll werden kann, kannst Du mit ``` /opt/firewall/firewall debug 1 ``` das Logging einschalten, mit "0" dann natürlich wieder ausschalten.
+Steuern lässt sich das Debugging der Regelsets in der firewall.conf. Die Variable ``` DEBUG_FW=1 ``` schaltet das Debugging ein und zeigt jeden Regelfall an, der nicht den Bedingungen entspricht die Du gesetzt hast. Hast Du das Debugging Standardmaäßig ausgeschaltet, was sinnvoll ist da sonst das syslog-File sehr voll werden kann, kannst Du mit ``` /opt/bifroest/firewall debug 1 ``` das Logging einschalten, mit "0" dann natürlich wieder ausschalten.
 
 ## Script-Debug
 
-Mit ``` DEBUG=1 /opt/firewall/firewall [Options] ``` wird das Debugging des Scriptes eingeschaltet. Hier kannst Du mögliche (Schreib-) Fehler in Deinen Regelsets erkennen.
+Mit ``` DEBUG=1 /opt/bifroest/firewall [Options] ``` wird das Debugging des Scriptes eingeschaltet. Hier kannst Du mögliche (Schreib-) Fehler in Deinen Regelsets erkennen.
 
 # Regeln einschalten
 
 Die Links _müssen_ die Endung ``` sh ``` besitzen, da sie sonst nicht automatisch eingelesen und aktiviert werden!
 
-``` ln -s /opt/firewall/rules-available/ [ Dateiname.sh ] /opt/firewall/rules-enable/ [dateiname.sh] ```
+``` ln -s /opt/bifroest/rules-available/ [ Dateiname.sh ] /opt/bifroest/rules-enable/ [dateiname.sh] ```
 
 # Snippets
 
