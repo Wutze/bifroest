@@ -5,8 +5,6 @@ Das Firewallscript am besten nach ``` /opt/firewall/ ``` kopieren
 git clone
 ```
 cd /opt/
-mkdir firewall
-cd firewall
 git clone https://github.com/Wutze/firewall
 ```
 
