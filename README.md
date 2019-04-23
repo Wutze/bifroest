@@ -99,7 +99,7 @@ Die Links _müssen_ die Endung ``` sh ``` besitzen, da sie sonst nicht automatis
 
 Im Ordner snippets:
 
-1. Vorausgesetzt Du hast Multitail installiert, dann füge die Zeilen aus der multitail.conf in die Datei /etc/multitail.conf ein. Durch den Aufruf von: ``` multitail -s 2 -cS microwall /var/log/syslog ``` hast Du dann eine farblich abgestufte Ausgabe, die das auffinden von Fehlern vereinfacht.
+1. Vorausgesetzt Du hast Multitail installiert, dann füge die Zeilen aus der multitail.conf in die Datei /etc/multitail.conf ein. Durch den Aufruf von: ``` multitail -s 2 -cS bifroest /var/log/syslog ``` hast Du dann eine farblich abgestufte Ausgabe, die das auffinden von Fehlern vereinfacht.
 
 2. Ein Start/Stop-Script für ``` /etc/init.d/ ```, einfach da hinein kopieren. Fertig
 
@@ -209,7 +209,7 @@ The links _must_ have the extension ``` sh ````, otherwise they will not be read
 
 In the snippets folder:
 
-1. assuming you have Multitail installed, add the lines from multitail.conf to /etc/multitail.conf. By calling: ``` multitail -s 2 -cS microwall /var/log/syslog ``` you will have a colored output that makes it easier to find errors.
+1. assuming you have Multitail installed, add the lines from multitail.conf to /etc/multitail.conf. By calling: ``` multitail -s 2 -cS bifroest /var/log/syslog ``` you will have a colored output that makes it easier to find errors.
 
 2. a start/stop script for ``` /etc/init.d/ ```, just copy it in. Done
 
