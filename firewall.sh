@@ -23,7 +23,7 @@
 # Description: bifroest - extended and modular firewallscript for iptables 
 ### END INIT INFO
 
-cd /opt/firewall
+cd /opt/bifroest
 
 ## Debug your Script
 ## Start this Script with: DEBUG=1 ./firewall.sh [Options]
