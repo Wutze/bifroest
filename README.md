@@ -1,3 +1,7 @@
+<p align="center">
+<img src="https://xvpn.ddnss.org/giT/bifroest-logo_klein.png" width="314" height="61" alt="bifroest"></a>
+</p>
+
 # Bifroest - Firewallscript
 
 Getestet unter Ubuntu, Debian 9
@@ -98,6 +102,10 @@ Im Ordner snippets:
 1. Vorausgesetzt Du hast Multitail installiert, dann füge die Zeilen aus der multitail.conf in die Datei /etc/multitail.conf ein. Durch den Aufruf von: ``` multitail -s 2 -cS microwall /var/log/syslog ``` hast Du dann eine farblich abgestufte Ausgabe, die das auffinden von Fehlern vereinfacht.
 
 2. Ein Start/Stop-Script für ``` /etc/init.d/ ```, einfach da hinein kopieren. Fertig
+
+## Donation
+
+[![Donate PayPal](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://paypal.me/huwutze)
 
 
 # English Translation
