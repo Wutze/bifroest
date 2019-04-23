@@ -14,13 +14,13 @@
 
 #LSB tags
 ### BEGIN INIT INFO
-# Provides: microwall
+# Provides: bifroest
 # Required-Start: $remote_fs $network
 # Required-Stop: $remote_fs $network
 # Default-Start: 2 3 4 5
 # Default-Stop: 0 1 6
 # Short-Description: Firewall Script
-# Description: microwall - extended and modular firewallscript for iptables 
+# Description: bifroest - extended and modular firewallscript for iptables 
 ### END INIT INFO
 
 cd /opt/firewall
