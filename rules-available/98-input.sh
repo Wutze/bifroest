@@ -48,6 +48,8 @@ $FW -A INPUT -i $DEV_DMZ1 -s 0.0.0.0 -d 255.255.255.255 -p udp -m multiport --dp
 # Webserver erlauben
 $FW -A INPUT -p tcp -i $DEV_EXTERN -m multiport --dport 80,443 -j ACCEPT	# Auf dem Router läuft ein Webserver, der darf Anfragen annehmen
 ### flooding/ddos blocken
+$FW -I INPUT -p tcp --dport 80 -i $DEV_EXTERN -m state --state NEW -m recent --set
+$FW -I INPUT -p tcp --dport 80 -i $DEV_EXTERN -m state --state NEW -m recent --update --seconds 60 --hitcount 4 -j DROP
 $FW -I INPUT -p tcp --dport 443 -i $DEV_EXTERN -m state --state NEW -m recent --set
 $FW -I INPUT -p tcp --dport 443 -i $DEV_EXTERN -m state --state NEW -m recent --update --seconds 60 --hitcount 4 -j DROP
 
