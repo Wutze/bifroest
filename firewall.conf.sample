@@ -21,7 +21,7 @@
 DEFAULT_STATUS="DROP"
 #DEFAULT_STATUS="ACCEPT"
 
-DEBUG_FW=0
+DEBUG_FW=1
 
 case $DEBUG_FW in
         0) LOG_LIMITER="-m limit";;
@@ -68,7 +68,7 @@ NET_VPN0="10.8.0.0/24"
 ## Hostroutings für Benutzerdefinierte User
 ## Hier werden üblicherweise die Herkunfts-IPs der
 ## eingewählten User eingetragen
-PRIVATE_VPN1=""
+PRIVATE_VPN1="10.8.0.6"
 PRIVATE_VPN2=""
 PRIVATE_VPN3=""
 PRIVATE_VPN4=""
@@ -82,7 +82,7 @@ FW="iptables"
 ## Konfigurationsfile Deines DNS-Servers unter "forwarders"
 DNS1="1.1.1.1"
 DNS2="9.9.9.9"
-DNS3="8.8.8.8"
+DNS3="9.9.9.10"
 
 ## die vom DHCP intern übermittelten DNS-Ziele sind erlaubt
 DNS_INTERN1="192.168.104.11"
