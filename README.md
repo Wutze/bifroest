@@ -2,6 +2,7 @@
 <img src="https://xvpn.ddnss.org/giT/bifroest-logo_klein.png" width="314" height="61" alt="bifroest"></a>
 </p>
 
+** You will find the description in English at the bottom of the page.
 # Bifroest - Firewallscript
 
 Getestet unter Ubuntu, Debian 9
@@ -102,6 +103,10 @@ Im Ordner snippets:
 1. Vorausgesetzt Du hast Multitail installiert, dann füge die Zeilen aus der multitail.conf in die Datei /etc/multitail.conf ein. Durch den Aufruf von: ``` multitail -s 2 -cS bifroest /var/log/syslog ``` hast Du dann eine farblich abgestufte Ausgabe, die das auffinden von Fehlern vereinfacht.
 
 2. Ein Start/Stop-Script für ``` /etc/init.d/ ```, einfach da hinein kopieren. Fertig
+
+# iptables Logging in eigene Datei
+
+Kopiere die Datei aus ```/snippets/rsyslog.d/iptables.conf``` nach ```/etc/rsyslog.d/``` und starete den rsyslog neu. Ab sofort werden alle Meldungen der Firewall in eine eigene Datei unter ```/var/log/``` nach ```iptables.log``` geschrieben. Damit würde sich nun auch das Live-Logging ändern in: ``` multitail -s 2 -cS bifroest /var/log/iptables.log ```. Damit wird Dein Syslog nicht mehr überflutet mit Firewallmeldungen. Die Log-Datei wird automatisch jeden Tag neu angelegt und die Datei des vorhergehenden Tages gepackt. Die Einstellungen hierfür findest Du zu Deinem jeweiligen System.
 
 ## Donation
 
@@ -213,7 +218,6 @@ In the snippets folder:
 
 2. a start/stop script for ``` /etc/init.d/ ```, just copy it in. Done
 
+# iptables logging to own file
 
-
-
-
+Copy the file from ```/snippets/rsyslog.d/iptables.conf``` to ```/etc/rsyslog.d/``` and restart the rsyslog. From now on, all messages from the firewall will be written to a separate file under ```/var/log/``` after ```iptables.log```. This would now also change the live logging to: ``` multitail -s 2 -cS bifroest /var/log/iptables.log ```. This way your syslog will no longer be flooded with firewall messages. The log file is automatically created every day and the file of the previous day is packed. You can find the settings for this on your respective system.
