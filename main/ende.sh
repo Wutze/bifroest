@@ -53,6 +53,11 @@ do
 	$FW -A FORWARD $var_s2 -m state --state RELATED,ESTABLISHED -j ${forwardrule[i]}
 	$FW -A ${forwardrule[i]} $LOG_LIMITER -j LOG --log-prefix "[FW] DENY-"${forwardrule[i]}" "
 	$FW -A ${forwardrule[i]} -j DROP
+	## Variablen leeren, da sonst die vorhergehenden eingetragen würden, wenn im nachfolgenden
+	## Script die Variablen leer bleiben.
+	var_s=""
+	var_s2=""
+	var_d=""
 done
 
 ## Flooding Regeln
