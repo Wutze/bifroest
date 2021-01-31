@@ -2,10 +2,10 @@
 <img src="https://xvpn.ddnss.org/giT/bifroest-logo_klein.png" width="314" height="61" alt="bifroest"></a>
 </p>
 
-** You will find the description in English at the bottom of the page.
+**You will find the description in English at the bottom of the page.**
 # Bifroest - Firewallscript
 
-Getestet unter Ubuntu, Debian 9
+Getestet unter Ubuntu 20.04, Debian 9, 10
 
 # Installation
 

@@ -16,7 +16,7 @@ Nachteil: Viele Dateien
 
 Du kannst unter bestimmten Voraussetzungen beide Varianten miteinander kombinieren, das braucht aber eine umfassende Planung und etwas Kenntnisse zur Verwendung von Subnets.
 
-# Ein neues Regelset erstellen
+## Ein neues Regelset erstellen
 
 Wenn Du das erste Mal mit Firewallregeln experimentierst, dann gehe Schritt für Schritt, wie in dieser Dokumentation beschrieben, vor. Das bewahrt Dich vor Fehlern, welche durch falsche Daten in den Scripten zu fatalen Folgen führen können.
 
@@ -104,6 +104,7 @@ Chain FORWARD (policy DROP 0 packets, 0 bytes)
 ```
 
 ### Beispiel
+
 Der zu erstellende Inhalt der Datei würde zur Netzwerkweiten Konfiguration so aussehen:
 
 ```
@@ -154,6 +155,7 @@ Zuerst muss Du in Erfahrung bringen, welche Kommunikation welches Gerät wirklic
 Diese Ports sollten eigentlich für jedes Gerät, welches immer einen Internetzugriff benötigt, freigeschaltet werden. Nur die Smart-Home Anlage und das Tablet, mit wlechem Smart-Home gesteuert wird, sollen nicht ins Internet zugreifen dürfen dürfen. Du willst ja zum einen weder überwacht werden noch sollen die Geräte unerlaubt nach Hause telefonieren.
 
 #### Zusätzlich benötigte Ports/TCP
+
 Eine Liste der standardisierten Ports findest Du hier: https://de.wikipedia.org/wiki/Liste_der_standardisierten_Ports
 
 Mailserverzugriffe: (Bitte informiere Dich dazu bei deinem Mailserver-Provider, welche Ports tatsächlich benötigt werden)
@@ -205,7 +207,7 @@ Zusammengesetzt sieht die Regel dann so aus:
 ## HTTP und HTTPS erlauben
 
 * ``` $FW ``` -> Variable mit dem Programmnamen ``` iptables ```
-* ``` -A ```
+* ``` -A ```  (Append, zuweisen zu Regelname)
 * ``` $rulename ``` -> Variable mit dem im Script vergebenen Namen der Firewall-Regel, damit die Regel auch dahin gesetzt wird, wo sie sein soll
 * ``` -i ``` -> Input-Device (Netzwerkschnittstelle
 * ``` $DEV_INTERN ``` -> die aus der firewall.conf bezogene Eintrag zur internen Netzwerkschnittstelle
@@ -235,19 +237,3 @@ Abschließen der Regel
 Zusamengesetzt sieht die Regel nun so aus:
 
 ``` $FW -A $rulename -i $DEV_INTERN -o $DEV_EXTERN -s 192.168.100.8 -p tcp -m multiport --dport 80,443 -j ACCEPT  ## Das Notebook darf ins Internet ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

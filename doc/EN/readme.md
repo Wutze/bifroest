@@ -1,10 +1,10 @@
 # Documentation for the firewall script
 
-**This firewall and documentation, based on iptables, should also be suitable for complete beginners. I have written the documentation to the best of my knowledge and as detailed as possible. This step by step guide has been tested by me exactly like this.
+**This firewall and documentation, based on iptables, should also be suitable for complete beginners. I have written the documentation to the best of my knowledge and as detailed as possible. This step by step guide has been tested by me exactly like this.**
 
 Have fun
 
-**You have two different ways to set up your firewall.
+**You have two different ways to set up your firewall.**
 
 1. network related configuration<br />
 Advantage: Few files<br />
@@ -16,7 +16,7 @@ Disadvantage: Many files
 
 You can combine both variants under certain conditions, but this requires extensive planning and some knowledge of the use of subnets.
 
-# Create a new rule set
+## Create a new rule set
 
 If you are experimenting with firewall rules for the first time, proceed step by step as described in this documentation. This will prevent you from making mistakes that can lead to fatal consequences due to incorrect data in the scripts.
 
@@ -105,6 +105,7 @@ Chain FORWARD (policy DROP 0 packets, 0 bytes)
 ```
 
 ### Example
+
 The content of the file to be created would look like this for network-wide configuration:
 
 ```
@@ -155,6 +156,7 @@ First you have to find out which communication which device really needs urgentl
 These ports should actually be enabled for every device that always needs internet access. Only the Smart Home system and the tablet used to control the Smart Home should not be allowed to access the Internet. For one thing, you don't want to be monitored and you don't want the devices to make unauthorised phone calls home.
 
 #### Additionally required ports/TCP
+
 A list of standardised ports can be found here: https://de.wikipedia.org/wiki/Liste_der_standardisierten_Ports
 
 Mail server access: (Please check with your mail server provider which ports are actually required)
@@ -236,19 +238,3 @@ Finalising the rule
 The rule now looks like this:
 
 ``` $FW -A $rulename -i $DEV_INTERN -o $DEV_EXTERN -s 192.168.100.8 -p tcp -m multiport --dport 80,443 -j ACCEPT  ## The notebook may access the Internet ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
