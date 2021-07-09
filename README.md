@@ -5,7 +5,7 @@
 **You will find the description in English at the bottom of the page.**
 # Bifroest - Firewallscript
 
-Getestet unter Ubuntu 20.04, Debian 9, 10
+Getestet unter Debian 10 Buster
 
 # Installation
 
@@ -15,14 +15,6 @@ git clone
 ```
 cd /opt/
 git clone https://github.com/Wutze/bifroest.git
-```
-
-Download zip Datei
-```
-wget https://github.com/Wutze/bifroest/archive/master.zip
-unzip master.zip
-mkdir /opt/bifroest
-cp -a firewall-master/. /opt/bifroest
 ```
 
 # Konfiguration
