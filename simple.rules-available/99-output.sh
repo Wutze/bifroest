@@ -20,6 +20,7 @@ $FW -A OUTPUT -p icmp -j ACCEPT
 
 $FW -A OUTPUT -p tcp -o $DEV_EXTERN -m multiport --dport 53,80,443 -j ACCEPT            ## http, https -> Gitlab/Updates
 
-$FW -A OUTPUT -p udp -o $DEV_EXTERN -m multiport --dport 53,123 -j ACCEPT $FW -A OUTPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
+$FW -A OUTPUT -p udp -o $DEV_EXTERN -m multiport --dport 53,123 -j ACCEPT 
+$FW -A OUTPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
 $FW -A OUTPUT $LOG_LIMITER -j LOG --log-prefix "[FW] DENY-OUTPUT-ACCESS "
 $FW -A OUTPUT -j DROP
