@@ -1,0 +1,12 @@
+[Unit]
+Description=Bifroest 3.x Firewall
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/bin/bash /opt/bifroest/firewall start
+TimeoutStartSec=0
+
+[Install]
+WantedBy=default.target
+
